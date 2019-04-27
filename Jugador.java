@@ -1,26 +1,44 @@
-public class Jugador{
-	//Variables
-	private String nombre;
-	//private Pokemon[] pokemones;
-	//private Pocion[] pociones;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package principal;
 
-	//constructor
-	public Jugador(String nombre, Pokemon[] pokemones, Pocion[] pociones){
-		this.nombre = nombre;
-		this.pokemones = pokemones;
-		this.pociones = pociones;
+import java.util.LinkedList;
+
+/**
+ *
+ * @author DELL-PC
+ */
+public class Jugador{
+	//Atributos de un jugador
+	private String nombre;
+	private LinkedList<Pokemon> listaPoke= new LinkedList<>();
+        private LinkedList<Pociones> listaPociones= new LinkedList<>();
+	
+        //constructor
+	public Jugador(String nombre, LinkedList<Pokemon> listaPoke, LinkedList<Pociones> listaPociones){
+            this.nombre = nombre;
+            this.listaPociones=listaPociones;
+            this.listaPoke=listaPoke;
 	}
+        public Jugador() {
+            
+        }
+        
 	//getters
 	public String getNombre(){
 		return nombre;
 	}
-	public String getPokemones(){
-		return pokemones;
+	public LinkedList getPokemones(){
+		return listaPoke;
 	}
-	public String getPociones(){
-		return pociones;
+	public LinkedList getPociones(){
+		return listaPociones;
 	}
-	//Metodos del jugador
+	
+        //Métodos del jugador
 	public void guardarPokemon(){
 
 	}

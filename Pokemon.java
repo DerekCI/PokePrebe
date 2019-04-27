@@ -1,106 +1,132 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package principal;
+
+import java.util.LinkedList;
+
+/**
+ *
+ * @author DELL-PC
+ */
 public class Pokemon{
 	//Atributos
 		//Se inicializan las estadisticas de los pokemon
 	private String apodo;
-	private int hp; // (vida)
-	private int ataque;
-	private int defensa;
-	private int velocidad;
-	private String estado;
+	private double hp; // (vida)
+	private double ataque;
+	private double defensa;
+	private double velocidad;
+	private String estado; //Disponible, Paralizado, Quemado, Envenenado, etc..
 	private String tipo;
 
 	//Constructor
-	Pokemon(String apodo, int hp, int ataque, int defensa, int velocidad, String estado, String tipo){
-		this.apodo = apodo;
-		this.hp = hp;
-		this.ataque = ataque;
-		this.defensa = defensa;
-		this.velocidad = velocidad;
-		this.estado = estado;
-		this.tipo = tipo;
+	Pokemon(String apodo, double hp, double ataque, double defensa, double velocidad, String estado, String tipo){
+            this.apodo = apodo;
+            this.hp = hp;
+            this.ataque = ataque;
+            this.defensa = defensa;
+            this.velocidad = velocidad;
+            this.estado = estado;
+            this.tipo = tipo;
 	}
 
 	//getters
 	public String getApodo(){
-		return apodo;
+            return apodo;
 	}
-	public int getHp(){
-		return hp;
+	public double getHp(){
+            return hp;
 	}
-	public int getAtaque(){
-		return ataque;
+	public double getAtaque(){
+            return ataque;
 	}
-	public int getDefensa(){
-		return defensa;
+	public double getDefensa(){
+            return defensa;
 	}
-	public int getVelocidad(){
-		return velocidad;
+	public double getVelocidad(){
+            return velocidad;
 	}
 	public String getEstado(){
-		return estado;
+            return estado;
 	}
 	public String getTipo(){
 		return tipo;
 	}
-
+        
+        //setters   
+        public void setHp(double hp) {
+            this.hp=hp;
+        }
+        public void setAtaque(double ataque){
+            this.ataque=ataque;
+        }
+        public void setDefensa(double defensa) {
+            this.defensa=defensa;
+        }
+        
+        
 	//metodos pokemon
 	public int recibeDaño(){
-
+            return 0;
 	}
-	public int calcularDaño(Pokemon agresor, Pokemon defensor){
-		if (agresor.tipo == "Fuego"){
-			if(defensor.tipo == "Hierba"){
-				daño = daño * 2;
+	public double calcularDaño(Pokemon agresor, Pokemon defensor){
+		if (agresor.tipo.equals("Fuego")){
+                    if(defensor.tipo.equals("Hierba")){
+                        defensor.ataque=defensor.ataque*2;
+                       // daño = daño * 2;
+                    }
+                    else if (defensor.tipo.equals("Agua") || defensor.tipo.equals("Fuego")) {
+			//daño = daño * 0.5;
+                    }
+                    else{
+                       // daño = daño * 1;
+                    }
+
+		}
+		else if (agresor.tipo.equals("Agua")){
+			if(defensor.tipo.equals("Fuego")){
+                            //daño = daño * 2;
 			}
-			else if (defensor.tipo == ("Agua" || "Fuego"))
-			{
-				daño = daño * .5;
+			else if (defensor.tipo.equals("Agua") || defensor.tipo.equals("Hierba")) {
+                            //daño = daño * .5;
 			}
 			else{
-				daño = daño * 1;
+                            //daño = daño * 1;
+			}
+
+
+		}
+		else if(agresor.tipo.equals("Hierba")){
+			if(defensor.tipo.equals("Agua")){
+                            //daño = daño * 2;
+			}
+			else if (defensor.tipo.equals("Hierba") || defensor.tipo.equals("Fuego")) {
+                           // daño = daño * .5;
+			}
+			else{
+                           // daño = daño * 1;
 			}
 
 		}
-		else if (agresor.tipo == "Agua"){
-			if(defensor.tipo == "Fuego"){
-				daño = daño * 2;
+		else if(agresor.tipo.equals("Electrico")){
+			if(defensor.tipo.equals("Agua")){
+                            //daño = daño * 2;
 			}
-			else if (defensor.tipo == ("Agua" || "Hierba"))
+			else if (defensor.tipo.equals("Hierba") || defensor.tipo.equals("Electrico"))
 			{
-				daño = daño * .5;
+                            //daño = daño * .5;
 			}
 			else{
-				daño = daño * 1;
-			}
-
-
-		}
-		else if(agresor.tipo == "Hierba"){
-			if(defensor.tipo == "Agua"){
-				daño = daño * 2;
-			}
-			else if (defensor.tipo == ("Hierba" || "Fuego"))
-			{
-				daño = daño * .5;
-			}
-			else{
-				daño = daño * 1;
+                            //daño = daño * 1;
 			}
 
 		}
-		else if(agresor.tipo == "Electrico"){
-			if(defensor.tipo == "Agua"){
-				daño = daño * 2;
-			}
-			else if (defensor.tipo == ("Hierba" || "Electrico"))
-			{
-				daño = daño * .5;
-			}
-			else{
-				daño = daño * 1;
-			}
-
-		}
-		return daño;
+		return 0.0;
 	}
+        
+        
+    
 }
